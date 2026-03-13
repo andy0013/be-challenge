@@ -222,7 +222,7 @@ Some **I/O-heavy operations** could be asynchronous:
 - **Swagger/OpenAPI documentation**  
   Adding **Swagger/OpenAPI** would provide an easy way to explore and test the APIs, improving developer experience and accelerating future development or integration efforts.
 
-> **Disclaimer:**
+> **LocalStack disclaimer:**
 >
 > When running the project locally with LocalStack, you need to set the following environment variables:
 >
@@ -230,6 +230,14 @@ Some **I/O-heavy operations** could be asynchronous:
 > export AWS_ACCESS_KEY_ID=test
 > export AWS_SECRET_ACCESS_KEY=test
 > ```
- > LocalStack uses a local S3 endpoint, so the URL format will **not** be the standard AWS S3 format (`https://<bucket>.s3.<region>.amazonaws.com/`).  
+>
+> LocalStack uses a local S3 endpoint, so the URL format will **not** be the standard AWS S3 format (`https://<bucket>.s3.<region>.amazonaws.com/`).  
 > While it is technically possible to configure LocalStack and the AWS SDK to produce virtual-hosted style URLs, this requires extra DNS setup and is usually unnecessary for local development.  
 > In real AWS environments or when using an actual AWS client, the URLs will behave as expected.
+
+---
+
+> **UUIDs disclaimer:**
+>
+> In this implementation, the S3 signed URL object and the profile record in MongoDB use **two separate UUIDs**, as defined by the challenge requirements.  
+> In a real-world scenario, it could be cleaner to use a **single UUID** for both, simplifying tracing, validation, and consistency between the profile and its uploaded image.
