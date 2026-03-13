@@ -222,6 +222,28 @@ Some **I/O-heavy operations** could be asynchronous:
 - **Swagger/OpenAPI documentation**  
   Adding **Swagger/OpenAPI** would provide an easy way to explore and test the APIs, improving developer experience and accelerating future development or integration efforts.
 
+## Out-of-Scope Improvements
+
+- **Circuit Breaker Pattern**  
+  Protect the service if AWS S3 or other I/O calls fail repeatedly, preventing thread exhaustion or cascading failures.
+
+- **Retry with Backoff**  
+  Retry S3 signed URL generation or uploads on transient errors to improve reliability.
+
+- **Rate Limiting / Throttling**  
+  Prevent abuse of the endpoints (e.g., repeated signed URL requests) using Redis or in-memory rate limiting.
+
+- **API Gateway & Security**  
+  Hide internal pods and add authentication/authorization to the endpoints.
+
+- **Enhanced Logging & Observability**  
+  Add structured logs or metrics for signed URL requests, uploads, and profile creations to monitor system health with alerts.
+
+- **Safety Checks**
+
+  Scan uploaded files for content type correctness or malicious content.
+
+
 > **LocalStack disclaimer:**
 >
 > When running the project locally with LocalStack, you need to set the following environment variables:
